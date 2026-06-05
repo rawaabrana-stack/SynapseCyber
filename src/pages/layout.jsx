@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import * as THREE from 'three';
 import { CSS } from './Home.jsx';
@@ -6,6 +6,10 @@ import { CSS } from './Home.jsx';
 export default function Layout() {
     const { pathname } = useLocation();
     const isHome = pathname === '/';
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    // Close the mobile menu whenever the route changes.
+    useEffect(() => { setMenuOpen(false); }, [pathname]);
 
     // Nav scroll behavior — force "scrolled" look on every non-home page
     // (home page has dark hero behind transparent nav; inner pages are light, so
@@ -136,6 +140,22 @@ export default function Layout() {
                         <Link to="/#faq" data-i18n="nav.faq">FAQ</Link>
                         <Link to="/quote" className="nav-cta" data-i18n="nav.cta">Book a Consultation →</Link>
                         <button className="lang-toggle" type="button" aria-label="Switch language / Changer de langue"><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button>
+                    </div>
+                    <button className={`nav-toggle ${menuOpen ? 'is-open' : ''}`} type="button" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((o) => !o)}>
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+                <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+                    <div className="container">
+                        <Link to="/#services" onClick={() => setMenuOpen(false)}>Services</Link>
+                        <Link to="/#industries" onClick={() => setMenuOpen(false)}>Industries</Link>
+                        <Link to="/#methodology" onClick={() => setMenuOpen(false)}>Methodology</Link>
+                        <Link to="/#insights" onClick={() => setMenuOpen(false)}>Insights</Link>
+                        <Link to="/#why" onClick={() => setMenuOpen(false)}>Why Us</Link>
+                        <Link to="/#faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
+                        <div className="mm-cta">
+                            <Link to="/quote" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Book a Consultation →</Link>
+                        </div>
                     </div>
                 </div>
             </nav>

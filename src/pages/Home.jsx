@@ -101,7 +101,34 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   }
   nav.scrolled .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
   .nav-cta:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-1px); }
-  @media (max-width: 900px) { .nav-links { display: none; } }
+  /* Hamburger button — hidden on desktop, shown on mobile */
+  .nav-toggle {
+    display: none;
+    width: 42px; height: 42px; padding: 0;
+    flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; cursor: pointer;
+  }
+  .nav-toggle span { display: block; width: 18px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+  nav.scrolled .nav-toggle { border-color: var(--line-2); }
+  nav.scrolled .nav-toggle span { background: var(--ink); }
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile dropdown menu */
+  .mobile-menu { display: none; overflow: hidden; max-height: 0; background: rgba(248,250,252,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: max-height 0.32s ease, border-color 0.32s ease; }
+  .mobile-menu.open { max-height: 70vh; border-bottom-color: var(--line); }
+  .mobile-menu .container { display: flex; flex-direction: column; padding-top: 6px; padding-bottom: 18px; }
+  .mobile-menu a { padding: 14px 2px; font-size: 16px; font-weight: 600; color: var(--ink-2); border-bottom: 1px solid var(--line); }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-menu .mm-cta { margin-top: 14px; }
+  .mobile-menu .mm-cta .btn { width: 100%; justify-content: center; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .mobile-menu { display: block; }
+  }
 
   /* ============ NEW DARK CINEMATIC HERO ============ */
   .hero-intro {
@@ -1797,11 +1824,22 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   }
   .doc-title {
     font-family: var(--display);
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 16px;
     color: var(--ink);
     letter-spacing: -0.01em;
-    margin-bottom: 3px;
+    white-space: nowrap;
+    margin-bottom: 2px;
+  }
+  .doc-doctype {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    white-space: nowrap;
+    margin-bottom: 4px;
   }
   .doc-sub {
     font-family: var(--mono);
@@ -3906,7 +3944,8 @@ export default function SynapseCyber() {
                 <div className="doc-page doc-page-1">
                   <div className="doc-header">
                     <div className="doc-stamp">CONFIDENTIAL · REDACTED</div>
-                    <div className="doc-title">SynapseCyber Penetration Test Report</div>
+                    <div className="doc-title">SynapseCyber</div>
+                    <div className="doc-doctype">Penetration Test Report</div>
                     <div className="doc-sub">v2.1 · Sample · Engagement #C-2025-04</div>
                   </div>
                   <div className="doc-section-label">Executive Summary</div>
