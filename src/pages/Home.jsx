@@ -240,6 +240,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     letter-spacing: 0.04em;
     color: #FFFFFF;
     margin: 0 0 28px;
+    white-space: nowrap;
     text-shadow: 0 0 60px rgba(37, 99, 235, 0.4);
     animation: brandBreathe 6s 4.5s ease-in-out infinite;
   }
@@ -2244,7 +2245,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
 
     /* Hero */
     .hero-intro { min-height: 56vh; padding: 80px 18px 60px; margin-top: -70px; }
-    .brand-title { font-size: clamp(46px, 14vw, 84px) !important; margin-bottom: 16px; }
+    .brand-title { font-size: clamp(40px, 11vw, 76px) !important; margin-bottom: 16px; }
     .brand-tagline { font-size: 11px !important; margin-bottom: 22px; letter-spacing: 0.22em; }
     .hero-eyebrow { font-size: 10px; padding: 6px 12px; margin-bottom: 18px; }
     .hero-cta-pill { padding: 13px 24px; font-size: 14px; }
@@ -2423,7 +2424,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
 
     /* Hero */
     .hero-intro { padding: 68px 14px 48px; min-height: 52vh; }
-    .brand-title { font-size: clamp(42px, 16vw, 62px) !important; }
+    .brand-title { font-size: clamp(28px, 11vw, 52px) !important; }
     .brand-tagline { letter-spacing: 0.18em; }
     .hero-cta-pill { padding: 12px 20px; font-size: 13px; }
     .hero-eyebrow { font-size: 9.5px; }
