@@ -1801,6 +1801,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     transform: rotate(2.5deg);
     z-index: 2;
     padding: 30px 26px;
+    overflow: hidden;
   }
   .report-grid:hover .doc-page-3 { transform: translate(-65px, 34px) rotate(-9deg); }
   .report-grid:hover .doc-page-2 { transform: translate(38px, 18px) rotate(-4deg); }
