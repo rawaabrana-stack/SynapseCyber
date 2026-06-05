@@ -3946,8 +3946,7 @@ export default function SynapseCyber() {
                   <div className="doc-header">
                     <div className="doc-stamp">CONFIDENTIAL · REDACTED</div>
                     <div className="doc-title">SynapseCyber</div>
-                    <div className="doc-doctype">Penetration Test Report</div>
-                    <div className="doc-sub">v2.1 · Sample · Engagement #C-2025-04</div>
+                    <div className="doc-sub">Penetration Test Report · Sample v2.1</div>
                   </div>
                   <div className="doc-section-label">Executive Summary</div>
                   <div className="doc-lines">
