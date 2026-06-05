@@ -114,6 +114,8 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
   .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-toggle.is-open { background: var(--ink); border-color: var(--ink); }
+  .nav-toggle.is-open span { background: #fff; }
 
   /* Mobile dropdown menu */
   .mobile-menu { display: none; overflow: hidden; max-height: 0; background: rgba(248,250,252,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: max-height 0.32s ease, border-color 0.32s ease; }
@@ -2036,7 +2038,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .cta-box p { color: var(--ink-2); margin-bottom: 20px; font-size: 15px; }
 
   /* FOOTER */
-  footer { background: var(--ink); color: #CBD5E1; padding: 80px 0 32px; margin-top: 80px; position: relative; overflow: hidden; }
+  footer { background: var(--ink); color: #CBD5E1; padding: 80px 0 32px; margin-top: 80px; position: relative; overflow: hidden; border-top: 1px solid #334155; }
   #footer-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.4; }
   footer .container { position: relative; z-index: 1; }
   .footer-top { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr); gap: 32px; padding-bottom: 56px; border-bottom: 1px solid #1E293B; }
