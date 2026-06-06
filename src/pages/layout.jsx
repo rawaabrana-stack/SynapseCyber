@@ -42,10 +42,21 @@ export default function Layout() {
                 window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
             false;
 
+        const isMobile =
+            (typeof window !== 'undefined' &&
+                window.matchMedia &&
+                (window.matchMedia('(max-width: 820px)').matches ||
+                    window.matchMedia('(pointer: coarse)').matches)) ||
+            false;
+        // Phones/tablets: skip this decorative field entirely so inner pages
+        // hold zero WebGL contexts and the home page holds only the globe.
+        // Multiple contexts were exhausting GPU memory and reloading the tab.
+        if (isMobile) return;
+
         const canvas = document.querySelector('#footer-canvas');
         if (!canvas) return;
 
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100);
@@ -104,10 +115,28 @@ export default function Layout() {
             renderer.render(scene, camera);
             rafId = requestAnimationFrame(animate);
         }
-        animate();
+
+        // Only render while the footer is actually on-screen and the tab is
+        // visible — the footer sits at the very bottom, so this loop was
+        // burning GPU/CPU for the entire page when nothing was even visible.
+        let onScreen = false, running = false;
+        const sync = () => {
+            const shouldRun = onScreen && !document.hidden;
+            if (shouldRun && !running) { running = true; rafId = requestAnimationFrame(animate); }
+            else if (!shouldRun && running) { running = false; if (rafId) cancelAnimationFrame(rafId); }
+        };
+        const io = new IntersectionObserver((entries) => { onScreen = entries[0].isIntersecting; sync(); }, { threshold: 0 });
+        io.observe(canvas);
+        document.addEventListener('visibilitychange', sync);
+
+        const onLost = (e) => { e.preventDefault(); if (rafId) cancelAnimationFrame(rafId); };
+        canvas.addEventListener('webglcontextlost', onLost, false);
 
         return () => {
             if (rafId) cancelAnimationFrame(rafId);
+            io.disconnect();
+            document.removeEventListener('visibilitychange', sync);
+            canvas.removeEventListener('webglcontextlost', onLost);
             window.removeEventListener('resize', resize);
             renderer.dispose();
         };

@@ -2496,6 +2496,41 @@ export default function SynapseCyber() {
 
     const cleanups = [];
 
+    // Low-power / touch devices: phones and tablets have far less GPU memory
+    // and a hard cap on simultaneous WebGL contexts. Running every decorative
+    // scene there caused context-loss crashes (frozen animations) and tab
+    // reloads on Android. On mobile we keep only the hero globe and trim it.
+    const isMobile =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      (window.matchMedia('(max-width: 820px)').matches ||
+        window.matchMedia('(pointer: coarse)').matches);
+    const DPR_CAP = isMobile ? 1.5 : 2;
+
+    // Pause a render loop whenever its canvas is off-screen or the tab is
+    // hidden. This frees the main thread for touch input (taps were queuing
+    // up behind always-on animation work) and stops needless GPU load.
+    function gateVisibility(canvas, start, stop) {
+      let onScreen = false;
+      let running = false;
+      const sync = () => {
+        const shouldRun = onScreen && !document.hidden;
+        if (shouldRun && !running) { running = true; start(); }
+        else if (!shouldRun && running) { running = false; stop(); }
+      };
+      const io = new IntersectionObserver(
+        (entries) => { onScreen = entries[0].isIntersecting; sync(); },
+        { threshold: 0 }
+      );
+      io.observe(canvas);
+      document.addEventListener('visibilitychange', sync);
+      cleanups.push(() => {
+        io.disconnect();
+        document.removeEventListener('visibilitychange', sync);
+        stop();
+      });
+    }
+
     // ===================================================================
     // HERO REPLAY — re-trigger intro animation when hero re-enters view
     // ===================================================================
@@ -2546,8 +2581,8 @@ export default function SynapseCyber() {
       const canvas = root.querySelector('#dot-globe');
       if (!canvas) return;
 
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !isMobile, powerPreference: 'low-power' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, DPR_CAP));
       if (THREE.SRGBColorSpace !== undefined) renderer.outputColorSpace = THREE.SRGBColorSpace;
       else if (THREE.sRGBEncoding !== undefined) renderer.outputEncoding = THREE.sRGBEncoding;
 
@@ -2589,7 +2624,7 @@ export default function SynapseCyber() {
       const core = new THREE.Mesh(coreGeo, coreMat);
       globeGroup.add(core);
 
-      const dotCount = 2400;
+      const dotCount = isMobile ? 1100 : 2400;
       const dotGeo = new THREE.SphereGeometry(0.028, 6, 6);
       const dotMatGray = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.4, metalness: 0.2 });
       const dotMatRed = new THREE.MeshStandardMaterial({
@@ -2658,7 +2693,7 @@ export default function SynapseCyber() {
       globeGroup.rotation.x = -0.22;
       globeGroup.rotation.z = 0.08;
 
-      const particleCount = 80;
+      const particleCount = isMobile ? 30 : 80;
       const pPositions = new Float32Array(particleCount * 3);
       const pColors = new Float32Array(particleCount * 3);
       const particleData = [];
@@ -2743,10 +2778,20 @@ export default function SynapseCyber() {
         renderer.render(scene, camera);
         rafId = requestAnimationFrame(animate);
       }
-      animate();
+
+      // If the GPU drops the context (common on memory-constrained Android),
+      // stop the loop cleanly instead of throwing / freezing in a bad state.
+      const onLost = (e) => { e.preventDefault(); if (rafId) cancelAnimationFrame(rafId); };
+      canvas.addEventListener('webglcontextlost', onLost, false);
+
+      gateVisibility(
+        canvas,
+        () => { rafId = requestAnimationFrame(animate); },
+        () => { if (rafId) cancelAnimationFrame(rafId); }
+      );
 
       cleanups.push(() => {
-        if (rafId) cancelAnimationFrame(rafId);
+        canvas.removeEventListener('webglcontextlost', onLost);
         window.removeEventListener('resize', resize);
         renderer.dispose();
       });
@@ -2758,8 +2803,9 @@ export default function SynapseCyber() {
     (function () {
       const canvas = root.querySelector('#method-canvas');
       if (!canvas) return;
+      if (isMobile) return; // one fewer WebGL context on phones — avoids GPU OOM
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, DPR_CAP));
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
       camera.position.z = 8;
@@ -2793,7 +2839,10 @@ export default function SynapseCyber() {
       const lineMat = new THREE.LineBasicMaterial({ color: 0x0f172a, transparent: true, opacity: 0.18 });
       let lineSegments;
       function updateLines() {
-        if (lineSegments) scene.remove(lineSegments);
+        if (lineSegments) {
+          scene.remove(lineSegments);
+          lineSegments.geometry.dispose(); // free old GPU buffer — was leaking every 3 frames
+        }
         const positions = [];
         const threshold = 2.2;
         for (let i = 0; i < nodes.length; i++) {
@@ -2826,10 +2875,18 @@ export default function SynapseCyber() {
         renderer.render(scene, camera);
         rafId = requestAnimationFrame(animate);
       }
-      animate();
+
+      const onLost = (e) => { e.preventDefault(); if (rafId) cancelAnimationFrame(rafId); };
+      canvas.addEventListener('webglcontextlost', onLost, false);
+
+      gateVisibility(
+        canvas,
+        () => { rafId = requestAnimationFrame(animate); },
+        () => { if (rafId) cancelAnimationFrame(rafId); }
+      );
 
       cleanups.push(() => {
-        if (rafId) cancelAnimationFrame(rafId);
+        canvas.removeEventListener('webglcontextlost', onLost);
         window.removeEventListener('resize', resize);
         renderer.dispose();
       });
@@ -2841,8 +2898,9 @@ export default function SynapseCyber() {
     (function () {
       const canvas = root.querySelector('#cta-canvas');
       if (!canvas) return;
+      if (isMobile) return; // one fewer WebGL context on phones — avoids GPU OOM
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, DPR_CAP));
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
       camera.position.set(0, 2, 5);
@@ -2881,10 +2939,18 @@ export default function SynapseCyber() {
         renderer.render(scene, camera);
         rafId = requestAnimationFrame(animate);
       }
-      animate();
+
+      const onLost = (e) => { e.preventDefault(); if (rafId) cancelAnimationFrame(rafId); };
+      canvas.addEventListener('webglcontextlost', onLost, false);
+
+      gateVisibility(
+        canvas,
+        () => { rafId = requestAnimationFrame(animate); },
+        () => { if (rafId) cancelAnimationFrame(rafId); }
+      );
 
       cleanups.push(() => {
-        if (rafId) cancelAnimationFrame(rafId);
+        canvas.removeEventListener('webglcontextlost', onLost);
         window.removeEventListener('resize', resize);
         renderer.dispose();
       });
