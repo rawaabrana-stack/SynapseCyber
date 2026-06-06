@@ -57,7 +57,7 @@ export default function Blog() {
           </h1>
           <p className="section-lead">
             Research notes, methodology deep-dives, and conference talks from the SynapseCyber team. New posts publish
-            as we wrap engagements and present at DEF CON, ATLSECCON, and OWASP.
+            as we wrap engagements and present at DEFCON, ATLSECCON, and OWASP.
           </p>
         </div>
       </section>

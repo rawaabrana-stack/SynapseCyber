@@ -31,7 +31,7 @@ const ROLES = [
 const VALUES = [
   ['Senior-led, always', 'No junior hand-offs. The person who tests signs off on the testing.'],
   ['Practitioner over salesperson', 'Consultants set scope and write reports. Sales does not negotiate findings.'],
-  ['Public research encouraged', 'Speaking at DEF CON, ATLSECCON, OWASP — and writing about what we learn.'],
+  ['Public research encouraged', 'Speaking at DEFCON, ATLSECCON, OWASP — and writing about what we learn.'],
   ['Canadian, by design', 'Data residency in Canada. Cleared personnel. Procurement-ready from day one.'],
   ['Quality bar, every engagement', 'Independent review on every deliverable. No "good enough" reports leave the door.'],
   ['Conservative judgement', 'When evidence does not support a finding, we say so. No inflated severities.'],

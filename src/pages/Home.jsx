@@ -2410,7 +2410,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     .footer-col ul li { margin-bottom: 7px; }
     .footer-col ul li a { font-size: 13px; }
     .footer-brand p { font-size: 13px; }
-    .footer-bottom { padding-top: 22px; font-size: 12px; flex-direction: column; text-align: center; gap: 14px; }
+    .footer-bottom { padding-top: 22px; font-size: 12px; flex-direction: column-reverse; text-align: center; gap: 14px; }
     .certs-row { gap: 12px 18px; justify-content: center; }
     .cert { font-size: 10px; }
     .a11y p { font-size: 12px; }
@@ -3326,7 +3326,7 @@ export default function SynapseCyber() {
                   </div>
                   <div className="creds-item">
                     <div className="creds-item-name">SANS SEC560</div>
-                    <div className="creds-item-desc">Network Penetration Testing &amp; Ethical Hacking</div>
+                    <div className="creds-item-desc">Enterprise Penetration Testing</div>
                     <div className="creds-item-source">SANS Institute</div>
                   </div>
                   <div className="creds-item">
@@ -3363,7 +3363,7 @@ export default function SynapseCyber() {
             <div className="speaking-row reveal">
               <div className="speaking-label">As featured &amp; spoken at:</div>
               <div className="speaking-logos">
-                <span className="speaking-logo">DEF CON <em>AppSec Village</em></span>
+                <span className="speaking-logo">DEFCON <em>AppSec Village</em></span>
                 <span className="speaking-dot">·</span>
                 <span className="speaking-logo">ATLSECCON</span>
                 <span className="speaking-dot">·</span>
@@ -3373,6 +3373,75 @@ export default function SynapseCyber() {
                 <span className="speaking-dot">·</span>
                 <span className="speaking-logo">BSides</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="founder" id="team">
+          <div className="container">
+            <div className="founder-grid reveal">
+              <div className="founder-left">
+                <div className="section-eyebrow" data-i18n="eyebrow.team">Our Team</div>
+                <blockquote className="founder-quote" data-i18n="quote.team">Senior security work needs <em>senior</em> consultants, not three layers of project management between you and the people doing the analysis.</blockquote>
+                <div className="founder-attrib">
+                  <div className="founder-name">Rida Rashid</div>
+                  <div className="founder-title">Founder &amp; Principal Consultant</div>
+                </div>
+              </div>
+
+              <div className="founder-right">
+                <div className="founder-meta">
+                  <h5 className="founder-meta-label">How We Deliver</h5>
+                  <p className="founder-meta-text">Every engagement is led by a senior consultant and independently reviewed: the person who tests is never the only person who signs off. No junior hand-offs, no project-management layers between you and the analysis.</p>
+                </div>
+                <div className="founder-meta">
+                  <h5 className="founder-meta-label">Speaking &amp; Recognition</h5>
+                  <div className="founder-speaking">
+                    <span>DEFCON <em>AppSec Village</em></span>
+                    <span>ATLSECCON</span>
+                    <span>SiberX</span>
+                    <span>OWASP Atlantic</span>
+                  </div>
+                </div>
+                <div className="founder-meta">
+                  <h5 className="founder-meta-label">Reach Out</h5>
+                  <div className="founder-contact">
+                    <a href="mailto:ridarashid.cyber@gmail.com">ridarashid.cyber@gmail.com</a>
+                    <a href="#">LinkedIn &#8599;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="team-grid reveal-stagger">
+              <article className="team-card is-principal">
+                <div className="team-avatar">RR</div>
+                <div className="team-role">Principal Consultant</div>
+                <div className="team-name">Founder</div>
+                <p className="team-cred">10+ years in offensive security and threat management across Sobeys, Flexiti, KPMG, CGI, and GoSecure. 40+ RCMP Harmonized TRAs/PIAs. DEFCON &amp; ATLSECCON speaker.</p>
+              </article>
+              <article className="team-card">
+                <div className="team-avatar">PT</div>
+                <div className="team-role">Senior Penetration Tester</div>
+                <div className="team-name">Offensive Security</div>
+                <p className="team-cred">Manual, adversary-style testing: chained attack paths, Active Directory and AD CS abuse, and business-logic flaws automated scanners miss.</p>
+              </article>
+              <article className="team-card">
+                <div className="team-avatar">TR</div>
+                <div className="team-role">Privacy / TRA Lead</div>
+                <div className="team-name">Risk &amp; Compliance</div>
+                <p className="team-cred">RCMP Harmonized TRA and PIA delivery across NS / NB / PEI government, Crown corporations, and healthcare. PIPEDA and provincial privacy alignment.</p>
+              </article>
+              <article className="team-card">
+                <div className="team-avatar">vC</div>
+                <div className="team-role">vCISO &amp; Advisory</div>
+                <div className="team-name">Governance</div>
+                <p className="team-cred">Board-level reporting and program design: NIST CSF, ISO 27001, SOC 2, and OSFI E-23 readiness for regulated and high-growth clients.</p>
+              </article>
+            </div>
+
+            <div className="team-capacity reveal">
+              <b>Capacity for larger engagements.</b> For multi-stream or fixed-deadline work, our core consultants are supported by a vetted partner network of senior specialists, scaled to scope while every deliverable stays senior-led and independently reviewed.
             </div>
           </div>
         </section>
@@ -3989,7 +4058,7 @@ export default function SynapseCyber() {
                 <div className="insight-block">
                   <h4>Speaking</h4>
                   <div className="insight-speaking">
-                    <div className="insight-talk"><div className="venue">DEF CON AppSec Village</div><div className="topic">Agentic AI &amp; MCP security</div></div>
+                    <div className="insight-talk"><div className="venue">DEFCON AppSec Village</div><div className="topic">Agentic AI &amp; MCP security</div></div>
                     <div className="insight-talk"><div className="venue">ATLSECCON 2026</div><div className="topic">Securing agentic AI and the Model Context Protocol</div></div>
                   </div>
                 </div>

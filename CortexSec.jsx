@@ -3026,7 +3026,7 @@ export default function SynapseCyber() {
           </div>
           <div className="creds-item">
             <div className="creds-item-name">SANS SEC560</div>
-            <div className="creds-item-desc">Network Penetration Testing &amp; Ethical Hacking</div>
+            <div className="creds-item-desc">Enterprise Penetration Testing</div>
             <div className="creds-item-source">SANS Institute</div>
           </div>
           <div className="creds-item">
@@ -3063,7 +3063,7 @@ export default function SynapseCyber() {
     <div className="speaking-row reveal">
       <div className="speaking-label">As featured &amp; spoken at:</div>
       <div className="speaking-logos">
-        <span className="speaking-logo">DEF CON <em>AppSec Village</em></span>
+        <span className="speaking-logo">DEFCON <em>AppSec Village</em></span>
         <span className="speaking-dot">·</span>
         <span className="speaking-logo">ATLSECCON</span>
         <span className="speaking-dot">·</span>
@@ -3689,7 +3689,7 @@ export default function SynapseCyber() {
         <div className="insight-block">
           <h4>Speaking</h4>
           <div className="insight-speaking">
-            <div className="insight-talk"><div className="venue">DEF CON AppSec Village</div><div className="topic">Agentic AI &amp; MCP security</div></div>
+            <div className="insight-talk"><div className="venue">DEFCON AppSec Village</div><div className="topic">Agentic AI &amp; MCP security</div></div>
             <div className="insight-talk"><div className="venue">ATLSECCON 2026</div><div className="topic">Securing agentic AI and the Model Context Protocol</div></div>
           </div>
         </div>
@@ -3725,7 +3725,7 @@ export default function SynapseCyber() {
         <div className="founder-meta">
           <h5 className="founder-meta-label">Speaking &amp; Recognition</h5>
           <div className="founder-speaking">
-            <span>DEF CON <em>AppSec Village</em></span>
+            <span>DEFCON <em>AppSec Village</em></span>
             <span>ATLSECCON</span>
             <span>SiberX</span>
             <span>OWASP Atlantic</span>
@@ -3746,7 +3746,7 @@ export default function SynapseCyber() {
         <div className="team-avatar">RR</div>
         <div className="team-role">Principal Consultant</div>
         <div className="team-name">Founder</div>
-        <p className="team-cred">10+ years in offensive security and threat management across Sobeys, Flexiti, KPMG, CGI, and GoSecure. 40+ RCMP Harmonized TRAs/PIAs. DEF CON &amp; ATLSECCON speaker.</p>
+        <p className="team-cred">10+ years in offensive security and threat management across Sobeys, Flexiti, KPMG, CGI, and GoSecure. 40+ RCMP Harmonized TRAs/PIAs. DEFCON &amp; ATLSECCON speaker.</p>
       </article>
       <article className="team-card">
         <div className="team-avatar">PT</div>

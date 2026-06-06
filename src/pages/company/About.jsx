@@ -60,7 +60,7 @@ export default function About() {
             <span>10+ years in offensive &amp; risk</span>
             <span>40+ TRAs &amp; PIAs delivered</span>
             <span>Canadian data residency</span>
-            <span>DEF CON / ATLSECCON speakers</span>
+            <span>DEFCON / ATLSECCON speakers</span>
           </div>
         </div>
       </section>
