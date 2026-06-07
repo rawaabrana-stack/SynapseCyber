@@ -2199,13 +2199,19 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .insights-side { display:flex; flex-direction:column; gap:20px; }
   .insight-block { border:1px solid var(--line); border-radius:14px; padding:26px 28px; background:var(--surface); }
   .insight-block h4 { font-family:var(--display); font-weight:500; font-size:19px; color:var(--ink); margin-bottom:14px; letter-spacing:-0.01em; }
-  .insight-speaking { display:flex; flex-direction:column; gap:14px; }
-  .insight-talk .venue { font-family:var(--display); font-weight:500; font-size:16px; color:var(--ink); }
+  .insight-speaking { display:flex; flex-direction:column; gap:0; }
+  .insight-talk { cursor:pointer; transition:all 0.3s ease; padding:14px 0; border-bottom:1px solid var(--line); }
+  .insight-talk:last-child { border-bottom:none; }
+  .insight-talk:hover { transform:translateX(4px); }
+  .insight-talk:hover .venue { color:var(--accent); }
+  .insight-talk .venue { font-family:var(--display); font-weight:500; font-size:16px; color:var(--ink); transition:color 0.2s; }
   .insight-talk .topic { font-size:13.5px; color:var(--ink-3); line-height:1.5; }
-  .insight-post { padding:14px 0; border-bottom:1px solid var(--line); }
+  .insight-post { padding:14px 0; border-bottom:1px solid var(--line); cursor:pointer; transition:all 0.3s ease; }
+  .insight-post:hover { transform:translateX(4px); }
+  .insight-post:hover .ip-title { color:var(--accent); }
   .insight-post:first-of-type{ padding-top:0; }
   .insight-post:last-child{ border-bottom:none; padding-bottom:0; }
-  .insight-post .ip-title { font-size:15px; color:var(--ink); font-weight:500; margin-bottom:3px; }
+  .insight-post .ip-title { font-size:15px; color:var(--ink); font-weight:500; margin-bottom:3px; transition:color 0.2s; }
   .insight-post .ip-meta { font-family:var(--mono); font-size:11px; color:var(--ink-3); letter-spacing:0.06em; }
   .insight-post .ip-soon { font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); }
 
