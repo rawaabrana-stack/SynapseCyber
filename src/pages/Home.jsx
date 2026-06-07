@@ -3415,25 +3415,25 @@ export default function SynapseCyber() {
 
             <div className="team-grid reveal-stagger">
               <article className="team-card is-principal">
-                <div className="team-avatar">RR</div>
+                <div className="team-avatar"></div>
                 <div className="team-role">Principal Consultant</div>
                 <div className="team-name">Founder</div>
                 <p className="team-cred">10+ years in offensive security and threat management across Sobeys, Flexiti, KPMG, CGI, and GoSecure. 40+ RCMP Harmonized TRAs/PIAs. DEFCON &amp; ATLSECCON speaker.</p>
               </article>
               <article className="team-card">
-                <div className="team-avatar">PT</div>
+                <div className="team-avatar"></div>
                 <div className="team-role">Senior Penetration Tester</div>
                 <div className="team-name">Offensive Security</div>
                 <p className="team-cred">Manual, adversary-style testing: chained attack paths, Active Directory and AD CS abuse, and business-logic flaws automated scanners miss.</p>
               </article>
               <article className="team-card">
-                <div className="team-avatar">TR</div>
+                <div className="team-avatar"></div>
                 <div className="team-role">Privacy / TRA Lead</div>
                 <div className="team-name">Risk &amp; Compliance</div>
                 <p className="team-cred">RCMP Harmonized TRA and PIA delivery across NS / NB / PEI government, Crown corporations, and healthcare. PIPEDA and provincial privacy alignment.</p>
               </article>
               <article className="team-card">
-                <div className="team-avatar">vC</div>
+                <div className="team-avatar"></div>
                 <div className="team-role">vCISO &amp; Advisory</div>
                 <div className="team-name">Governance</div>
                 <p className="team-cred">Board-level reporting and program design: NIST CSF, ISO 27001, SOC 2, and OSFI E-23 readiness for regulated and high-growth clients.</p>
