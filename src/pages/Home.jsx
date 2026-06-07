@@ -34,6 +34,19 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     --sans: "Manrope", system-ui, sans-serif;
     --mono: "JetBrains Mono", monospace;
   }
+  [data-theme="dark"] {
+    --bg: #0F172A;
+    --bg-alt: #1E293B;
+    --surface: #1E293B;
+    --ink: #F1F5F9;
+    --ink-2: #CBD5E1;
+    --ink-3: #94A3B8;
+    --line: #334155;
+    --line-2: #475569;
+    --accent: #3B82F6;
+    --accent-2: #60A5FA;
+    --accent-soft: #1E3A5F;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body {
@@ -52,9 +65,12 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
 
   /* TOP BAR */
   .topbar { background: var(--ink); color: #E2E8F0; font-size: 13px; padding: 10px 0; }
+  [data-theme="dark"] .topbar { background: var(--bg-alt); color: var(--ink-2); }
   .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
   .topbar a { color: #60A5FA; text-decoration: none; transition: color .15s ease; }
+  [data-theme="dark"] .topbar a { color: var(--accent); }
   .topbar a:hover { color: #93C5FD; text-decoration: underline; }
+  [data-theme="dark"] .topbar a:hover { color: var(--accent-2); }
   .pulse { display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); animation: pulse 2s infinite; margin-right: 8px; }
   @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
@@ -75,9 +91,17 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     border-bottom: 1px solid var(--line);
     backdrop-filter: blur(12px);
   }
+  [data-theme="dark"] nav.scrolled {
+    background: rgba(15, 23, 42, 0.92);
+  }
+  [data-theme="dark"] nav {
+    background: transparent;
+  }
   nav .container { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
   .logo { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; color: #FFFFFF; transition: color 0.4s; }
   nav.scrolled .logo { color: var(--ink); }
+  [data-theme="dark"] .logo { color: var(--ink); }
+  [data-theme="dark"] nav.scrolled .logo { color: var(--ink); }
   .logo-mark {
     width: 30px; height: 30px; background: var(--accent); color: #FFFFFF;
     display: grid; place-items: center; font-family: var(--mono); font-size: 14px;
@@ -85,11 +109,16 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s;
   }
   nav.scrolled .logo-mark { background: var(--ink); }
+  [data-theme="dark"] .logo-mark { background: var(--accent); color: #FFFFFF; }
+  [data-theme="dark"] nav.scrolled .logo-mark { background: var(--accent-2); color: #FFFFFF; }
   .logo:hover .logo-mark { transform: rotate(360deg); }
   .logo-mark::after { content: "S"; }
   .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14.5px; font-weight: 500; }
   .nav-links a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
   nav.scrolled .nav-links a { color: var(--ink-2); }
+  [data-theme="dark"] .nav-links a { color: var(--ink-2); }
+  [data-theme="dark"] nav.scrolled .nav-links a { color: var(--ink-2); }
+  [data-theme="dark"] .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover { color: var(--accent); }
   .nav-cta {
     background: rgba(255,255,255,0.1);
@@ -100,6 +129,8 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     backdrop-filter: blur(8px);
   }
   nav.scrolled .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
+  [data-theme="dark"] .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
+  [data-theme="dark"] nav.scrolled .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
   .nav-cta:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-1px); }
   /* Hamburger button — hidden on desktop, shown on mobile */
   .nav-toggle {
@@ -111,6 +142,9 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .nav-toggle span { display: block; width: 18px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
   nav.scrolled .nav-toggle { border-color: var(--line-2); }
   nav.scrolled .nav-toggle span { background: var(--ink); }
+  [data-theme="dark"] .nav-toggle { border-color: var(--line-2); }
+  [data-theme="dark"] .nav-toggle span { background: var(--ink); }
+  [data-theme="dark"] nav.scrolled .nav-toggle { border-color: var(--line); }
   .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
   .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -118,7 +152,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .nav-toggle.is-open span { background: #fff; }
 
   /* Mobile dropdown menu */
-  .mobile-menu { display: none; overflow: hidden; max-height: 0; background: rgba(248,250,252,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: max-height 0.32s ease, border-color 0.32s ease; }
+  .mobile-menu { display: none; overflow: hidden; max-height: 0; background: var(--bg); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: max-height 0.32s ease, border-color 0.32s ease; }
   .mobile-menu.open { max-height: 70vh; border-bottom-color: var(--line); }
   .mobile-menu .container { display: flex; flex-direction: column; padding-top: 6px; padding-bottom: 18px; }
   .mobile-menu a { padding: 14px 2px; font-size: 16px; font-weight: 600; color: var(--ink-2); border-bottom: 1px solid var(--line); }
@@ -2090,6 +2124,18 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .footer-lang .lang-toggle { margin-left:0; color:#94A3B8; border-color:#1E293B; }
   .footer-lang .lang-toggle:hover { border-color:#334155; }
 
+  /* ===================== ADDED: THEME TOGGLE ===================== */
+  .theme-toggle { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; background:transparent; border:1px solid var(--line-2); border-radius:999px; cursor:pointer; color:var(--ink-3); transition:all 0.25s; margin-left:4px; }
+  .theme-toggle:hover { border-color:var(--ink-3); color:var(--ink); }
+  .theme-toggle svg { transition:transform 0.3s ease; }
+  .theme-toggle:hover svg { transform:rotate(15deg); }
+  nav.scrolled .theme-toggle { background:var(--bg); border-color:var(--line); }
+  nav.scrolled .theme-toggle:hover { border-color:var(--ink-3); }
+  .mm-cta .theme-toggle { margin-right:12px; }
+  .lang-toggle { margin-left:4px; }
+  .mm-controls { display:flex; gap:8px; align-items:center; margin-bottom:16px; }
+  .mm-controls .theme-toggle, .mm-controls .lang-toggle { margin:0; }
+
   /* ===================== ADDED: INDUSTRIES ===================== */
   .industries-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   @media (max-width:900px){ .industries-grid{ grid-template-columns:repeat(2,1fr);} }
@@ -2133,15 +2179,23 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   .insights-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:start; }
   @media (max-width:900px){ .insights-grid{ grid-template-columns:1fr;} }
   .sirp-card { background:var(--ink); color:#fff; border-radius:16px; padding:36px 34px; position:relative; overflow:hidden; }
+  [data-theme="dark"] .sirp-card { background:var(--surface); color:var(--ink); }
   .sirp-card .sirp-tag { font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.18em; color:#93C5FD; margin-bottom:14px; }
+  [data-theme="dark"] .sirp-card .sirp-tag { color:var(--accent); }
   .sirp-card h3 { font-family:var(--display); font-weight:500; font-size:26px; letter-spacing:-0.015em; margin:0 0 8px; color:#fff; }
+  [data-theme="dark"] .sirp-card h3 { color:var(--ink); }
   .sirp-card .sirp-sub { font-size:14.5px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:24px; }
+  [data-theme="dark"] .sirp-card .sirp-sub { color:var(--ink-2); }
   .sirp-letters { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:24px; }
   .sirp-letter { border:1px solid rgba(255,255,255,0.14); border-radius:10px; padding:14px 16px; }
+  [data-theme="dark"] .sirp-letter { border-color:var(--line); }
   .sirp-letter b { font-family:var(--display); font-size:22px; color:#fff; display:block; line-height:1.1; }
+  [data-theme="dark"] .sirp-letter b { color:var(--ink); }
   .sirp-letter span { font-size:12.5px; color:rgba(255,255,255,0.7); }
+  [data-theme="dark"] .sirp-letter span { color:var(--ink-2); }
   .sirp-inputs { display:flex; flex-wrap:wrap; gap:8px; }
   .sirp-inputs span { font-family:var(--mono); font-size:11px; padding:5px 11px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); color:rgba(255,255,255,0.85); }
+  [data-theme="dark"] .sirp-inputs span { background:var(--bg-alt); border-color:var(--line); color:var(--ink-2); }
   .insights-side { display:flex; flex-direction:column; gap:20px; }
   .insight-block { border:1px solid var(--line); border-radius:14px; padding:26px 28px; background:var(--surface); }
   .insight-block h4 { font-family:var(--display); font-weight:500; font-size:19px; color:var(--ink); margin-bottom:14px; letter-spacing:-0.01em; }
@@ -2215,6 +2269,12 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   /* Inner-page hero banners (inline 120px/60px) — tightened so inner pages aren't top-heavy */
   section[style*="paddingTop: '120px'"] { padding-top: 94px !important; padding-bottom: 44px !important; }
   .section-lead { margin-bottom: 44px; }
+
+  /* ===================== TABLET: <= 1100px ===================== */
+  @media (max-width: 1100px) {
+    .nav-links { gap: 20px; font-size: 14px; }
+    .nav-cta { padding: 9px 14px; font-size: 13px; }
+  }
 
   /* ===================== MOBILE: <= 900px ===================== */
   @media (max-width: 900px) {
