@@ -154,10 +154,10 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   /* Mobile dropdown menu */
   .mobile-menu { display: none; overflow: hidden; max-height: 0; background: var(--bg); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: max-height 0.32s ease, border-color 0.32s ease; }
   .mobile-menu.open { max-height: 70vh; border-bottom-color: var(--line); }
-  .mobile-menu .container { display: flex; flex-direction: column; padding-top: 6px; padding-bottom: 18px; }
-  .mobile-menu a { padding: 14px 2px; font-size: 16px; font-weight: 600; color: var(--ink-2); border-bottom: 1px solid var(--line); }
+  .mobile-menu .container { display: flex; flex-direction: column; padding-top: 4px; padding-bottom: 12px; }
+  .mobile-menu a { padding: 6px 2px; font-size: 16px; font-weight: 600; color: var(--ink-2); border-bottom: 1px solid var(--line); }
   .mobile-menu a:hover { color: var(--accent); }
-  .mobile-menu .mm-cta { margin-top: 14px; }
+  .mobile-menu .mm-cta { margin-top: 4px; }
   .mobile-menu .mm-cta .btn { width: 100%; justify-content: center; }
 
   @media (max-width: 900px) {
@@ -2133,7 +2133,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   nav.scrolled .theme-toggle:hover { border-color:var(--ink-3); }
   .mm-cta .theme-toggle { margin-right:12px; }
   .lang-toggle { margin-left:4px; }
-  .mm-controls { display:flex; gap:8px; align-items:center; margin-bottom:16px; justify-content:center; }
+  .mm-controls { display:flex; gap:8px; align-items:center; margin-bottom:4px; justify-content:center; }
   .mm-controls .theme-toggle, .mm-controls .lang-toggle { margin:0; }
   .mm-controls .theme-toggle { display:inline-flex !important; }
   .mm-controls .lang-toggle { display:inline-flex !important; }
