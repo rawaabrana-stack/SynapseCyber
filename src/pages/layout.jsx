@@ -13,6 +13,7 @@ export default function Layout() {
         }
         return 'light';
     });
+    const [isHovered, setIsHovered] = useState(false);
 
     // Apply theme to document
     useEffect(() => {

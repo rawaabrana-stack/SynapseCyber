@@ -129,9 +129,12 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     backdrop-filter: blur(8px);
   }
   nav.scrolled .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
-  [data-theme="dark"] .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
-  [data-theme="dark"] nav.scrolled .nav-cta { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
-  .nav-cta:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-1px); }
+  [data-theme="dark"] .nav-cta { background: #CBD5E1 !important; color: #000000 !important; border-color: #CBD5E1 !important; }
+  [data-theme="dark"] nav.scrolled .nav-cta { background: #CBD5E1 !important; color: #000000 !important; border-color: #CBD5E1 !important; }
+  [data-theme="dark"] nav .nav-links .nav-cta { background: #CBD5E1 !important; color: #000000 !important; border-color: #CBD5E1 !important; }
+  .nav-cta:hover { background: var(--accent) !important; color: #FFFFFF !important; border-color: var(--accent) !important; transform: translateY(-1px); }
+  [data-theme="dark"] .nav-cta:hover { background: var(--accent) !important; color: #FFFFFF !important; }
+  [data-theme="dark"] nav .nav-links .nav-cta:hover { background: var(--accent) !important; color: #FFFFFF !important; }
   /* Hamburger button — hidden on desktop, shown on mobile */
   .nav-toggle {
     display: none;
@@ -383,6 +386,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     font-size: 18px; letter-spacing: -0.01em; color: var(--ink);
     display: inline-flex; align-items: center; gap: 9px; margin-bottom: 20px;
   }
+  [data-theme="dark"] .quote-banner-logo { color: #000; }
   .quote-banner-logo .logo-dot {
     width: 24px; height: 24px; border-radius: 6px;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -405,6 +409,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     font-size: clamp(30px, 4.6vw, 44px); letter-spacing: -0.028em;
     line-height: 1.04; color: var(--ink); margin: 0 0 16px;
   }
+  [data-theme="dark"] .quote-banner h2 { color: #000; }
   .quote-banner-sub {
     font-size: 16.5px; line-height: 1.5; color: #1B3D70;
     max-width: 400px; font-weight: 500;
@@ -810,6 +815,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     position: relative;
     overflow: hidden;
   }
+  [data-theme="dark"] .form-submit-pro { color: #000; }
   .form-submit-pro::before {
     content: "";
     position: absolute;
@@ -864,6 +870,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     transition: all 0.2s; cursor: pointer; border: none;
   }
   .btn-primary { background: var(--ink); color: var(--bg); }
+  [data-theme="dark"] .btn-primary { color: #000; }
   .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25); }
   .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--line-2); }
   .btn-secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
@@ -2037,10 +2044,11 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
     transition: all 0.2s;
     white-space: nowrap;
   }
+  [data-theme="dark"] .report-btn { color: #000; }
   .report-btn:hover {
     background: var(--accent);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
   }
   .report-btn .arrow { transition: transform 0.2s; }
   .report-btn:hover .arrow { transform: translateX(4px); }
