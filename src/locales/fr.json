@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "services": "Services",
+    "industries": "Secteurs",
+    "methodology": "Méthodologie",
+    "insights": "Analyses",
+    "why": "Pourquoi nous",
+    "faq": "FAQ",
+    "cta": "Prendre rendez-vous →"
+  },
+  "hero": {
+    "eyebrow": "Assurance de sécurité indépendante",
+    "tagline": "UNE SÉCURITÉ QUI FONCTIONNE",
+    "cta": "Obtenir une consultation en sécurité",
+    "subnote": "Garantie de remboursement de 30 jours · Mandats menés par des seniors"
+  },
+  "trust": {
+    "eyebrow": "Références et reconnaissance",
+    "title": "Des normes éprouvées. Une vérification <em>indépendante</em>."
+  },
+  "services": {
+    "eyebrow": "Ce que nous faisons",
+    "title": "Des services de <em>cybersécurité</em> complets pour des organisations résilientes."
+  },
+  "industries": {
+    "eyebrow": "Secteurs desservis",
+    "title": "Expertise sectorielle, aisance <em>réglementaire</em>."
+  },
+  "methodology": {
+    "eyebrow": "Notre méthode",
+    "title": "Un processus de mandat <em>structuré</em> en six étapes."
+  },
+  "engage": {
+    "eyebrow": "Modes de collaboration",
+    "title": "Des façons claires de <em>collaborer</em>."
+  },
+  "why": {
+    "eyebrow": "Pourquoi nous choisir",
+    "title": "Une sécurité indépendante, menée par des experts, <em>qui livre</em> de vraies réponses."
+  },
+  "coverage": {
+    "eyebrow": "Normes mondiales, prestation locale",
+    "title": "Une sécurité menée par des seniors, mesurée par les résultats."
+  },
+  "engagements": {
+    "eyebrow": "Mandats récents",
+    "title": "Des mandats marquants, <em>anonymisés</em>."
+  },
+  "insights": {
+    "eyebrow": "Analyses et recherche",
+    "title": "Recherche et <em>leadership éclairé</em>."
+  },
+  "team": {
+    "eyebrow": "Notre équipe",
+    "quote": "Un travail de sécurité de haut niveau exige des consultants <em>seniors</em>, pas trois couches de gestion de projet entre vous et les personnes qui réalisent l'analyse."
+  },
+  "sample": {
+    "eyebrow": "Avant de décider",
+    "title": "Voyez le <em>rapport</em> avant de vous engager."
+  },
+  "faq": {
+    "eyebrow": "Questions fréquentes",
+    "title": "Vous avez des questions, <em>nous avons</em> les réponses."
+  },
+  "data": {
+    "eyebrow": "Traitement des données",
+    "title": "Vos données restent <em>au Canada</em>, et sous contrôle."
+  },
+  "quote": {
+    "title": "Demander un devis",
+    "subtitle": "Remplissez le formulaire ci-dessous et nous vous répondrons avec un devis personnalisé selon vos besoins.",
+    "why": "Pourquoi SynapseCyber",
+    "reason1": "Consultants seniors uniquement, aucun junior sur votre compte",
+    "reason2": "10+ ans, 40+ TRA et PIA livrés",
+    "reason3": "Des preuves acceptées par votre conseil d'administration",
+    "intro": "Un consultant senior répond dans un jour ouvrable. Pas de tourniquet commercial, juste un devis clair et délimité.",
+    "fullName": "Nom complet",
+    "workEmail": "Courriel professionnel",
+    "organisation": "Organisation",
+    "serviceRequired": "Service requis",
+    "projectDetails": "Détails du projet",
+    "submit": "Demander un devis"
+  },
+  "footer": {
+    "tagline": "Assurance de sécurité indépendante pour les organisations réglementées et à haut risque.",
+    "services": "Services",
+    "industries": "Secteurs",
+    "resources": "Ressources",
+    "company": "Entreprise",
+    "accessibility": "Accessibilité",
+    "a11y": "Accessibilité · WCAG 2.1 AA / LAPHO",
+    "quote": "Demander un devis",
+    "legal": "Confiance et mentions légales",
+    "copyright": "© 2026 SynapseCyber Information Security. Tous droits réservés."
+  }
+}

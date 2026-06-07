@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as THREE from 'three';
 import { useMailForm } from '../useMailForm.js';
 
@@ -2534,6 +2535,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
 `;
 
 export default function SynapseCyber() {
+  const { t } = useTranslation();
   const rootRef = useRef(null);
   const quoteForm = useMailForm('Home Quote');
   const [sampleSent, setSampleSent] = useState(false);
@@ -3107,32 +3109,6 @@ export default function SynapseCyber() {
       });
     })();
 
-    // ===================================================================
-    // EN/FR BILINGUAL TOGGLE — swaps [data-i18n] copy; default EN
-    // ===================================================================
-    (function () {
-      const I18N = { "nav.services": { "en": "Services", "fr": "Services" }, "nav.industries": { "en": "Industries", "fr": "Secteurs" }, "nav.methodology": { "en": "Methodology", "fr": "Méthodologie" }, "nav.insights": { "en": "Insights", "fr": "Analyses" }, "nav.why": { "en": "Why Us", "fr": "Pourquoi nous" }, "nav.faq": { "en": "FAQ", "fr": "FAQ" }, "nav.cta": { "en": "Book a Consultation →", "fr": "Prendre rendez-vous →" }, "hero.eyebrow": { "en": "Independent Security Assurance", "fr": "Assurance de sécurité indépendante" }, "hero.tagline": { "en": "SECURITY THAT SIMPLY WORKS", "fr": "UNE SÉCURITÉ QUI FONCTIONNE" }, "hero.cta": { "en": "Get a Security Consultation", "fr": "Obtenir une consultation en sécurité" }, "hero.subnote": { "en": "30-day money-back guarantee · Senior-led engagements", "fr": "Garantie de remboursement de 30 jours · Mandats menés par des seniors" }, "eyebrow.trust": { "en": "Credentials &amp; Recognition", "fr": "Références et reconnaissance" }, "title.trust": { "en": "Trusted standards. <em>Independent</em> verification.", "fr": "Des normes éprouvées. Une vérification <em>indépendante</em>." }, "eyebrow.services": { "en": "What We Do", "fr": "Ce que nous faisons" }, "title.services": { "en": "Comprehensive <em>cybersecurity</em> services for resilient organisations.", "fr": "Des services de <em>cybersécurité</em> complets pour des organisations résilientes." }, "eyebrow.industries": { "en": "Sectors We Serve", "fr": "Secteurs desservis" }, "title.industries": { "en": "Sector expertise, <em>regulatory</em> fluency.", "fr": "Expertise sectorielle, aisance <em>réglementaire</em>." }, "eyebrow.methodology": { "en": "How We Work", "fr": "Notre méthode" }, "title.methodology": { "en": "A structured six-stage <em>engagement</em> process.", "fr": "Un processus de mandat <em>structuré</em> en six étapes." }, "eyebrow.engage": { "en": "How to Engage", "fr": "Modes de collaboration" }, "title.engage": { "en": "Clear ways to <em>work with us</em>.", "fr": "Des façons claires de <em>collaborer</em>." }, "eyebrow.why": { "en": "Why Choose Us", "fr": "Pourquoi nous choisir" }, "title.why": { "en": "Independent, expert-led security <em>that delivers</em> real answers.", "fr": "Une sécurité indépendante, menée par des experts, <em>qui livre</em> de vraies réponses." }, "eyebrow.coverage": { "en": "Global Standards, Local Delivery", "fr": "Normes mondiales, prestation locale" }, "title.coverage": { "en": "Senior-led security, measured by outcomes.", "fr": "Une sécurité menée par des seniors, mesurée par les résultats." }, "eyebrow.engagements": { "en": "Recent Engagements", "fr": "Mandats récents" }, "title.engagements": { "en": "Notable work, <em>anonymized</em>.", "fr": "Des mandats marquants, <em>anonymisés</em>." }, "eyebrow.insights": { "en": "Insights &amp; Research", "fr": "Analyses et recherche" }, "title.insights": { "en": "Research and <em>thought leadership</em>.", "fr": "Recherche et <em>leadership éclairé</em>." }, "eyebrow.team": { "en": "Our Team", "fr": "Notre équipe" }, "quote.team": { "en": "Senior security work needs <em>senior</em> consultants, not three layers of project management between you and the people doing the analysis.", "fr": "Un travail de sécurité de haut niveau exige des consultants <em>seniors</em>, pas trois couches de gestion de projet entre vous et les personnes qui réalisent l'analyse." }, "eyebrow.sample": { "en": "Before You Decide", "fr": "Avant de décider" }, "title.sample": { "en": "See the <em>report</em> before you commit.", "fr": "Voyez le <em>rapport</em> avant de vous engager." }, "eyebrow.faq": { "en": "Frequently Asked", "fr": "Questions fréquentes" }, "title.faq": { "en": "You have questions, <em>we have</em> answers.", "fr": "Vous avez des questions, <em>nous avons</em> les réponses." }, "eyebrow.data": { "en": "Data Handling", "fr": "Traitement des données" }, "title.data": { "en": "Your data stays <em>in Canada</em>, and under control.", "fr": "Vos données restent <em>au Canada</em>, et sous contrôle." }, "footer.tagline": { "en": "Independent security assurance for regulated and high-risk organisations.", "fr": "Assurance de sécurité indépendante pour les organisations réglementées et à haut risque." }, "footer.services": { "en": "Services", "fr": "Services" }, "footer.industries": { "en": "Industries", "fr": "Secteurs" }, "footer.resources": { "en": "Resources", "fr": "Ressources" }, "footer.company": { "en": "Company", "fr": "Entreprise" }, "footer.accessibility": { "en": "Accessibility", "fr": "Accessibilité" }, "footer.a11y": { "en": "Accessibility · WCAG 2.1 AA / AODA", "fr": "Accessibilité · WCAG 2.1 AA / LAPHO" }, "footer.quote": { "en": "Request a Quote", "fr": "Demander un devis" }, "footer.legal": { "en": "Trust & Legal", "fr": "Confiance et mentions légales" }, "footer.copyright": { "en": "© 2026 SynapseCyber Information Security. All rights reserved.", "fr": "© 2026 SynapseCyber Information Security. Tous droits réservés." } };
-      const toggles = document.querySelectorAll('.lang-toggle');
-      function setLang(lang) {
-        document.querySelectorAll('[data-i18n]').forEach((el) => {
-          const d = I18N[el.getAttribute('data-i18n')];
-          if (d && d[lang] != null) el.innerHTML = d[lang];
-        });
-        document.documentElement.setAttribute('lang', lang);
-        toggles.forEach((t) => t.classList.toggle('is-fr', lang === 'fr'));
-        try { localStorage.setItem('cx-lang', lang); } catch (e) { }
-      }
-      let cur = 'en';
-      try { if (localStorage.getItem('cx-lang') === 'fr') cur = 'fr'; } catch (e) { }
-      const handlers = [];
-      toggles.forEach((t) => {
-        const h = () => { cur = cur === 'fr' ? 'en' : 'fr'; setLang(cur); };
-        t.addEventListener('click', h);
-        handlers.push([t, h]);
-      });
-      if (cur === 'fr') setLang('fr');
-      cleanups.push(() => handlers.forEach(([t, h]) => t.removeEventListener('click', h)));
-    })();
 
     // ------------------------- teardown -------------------------
     return () => {
@@ -3177,16 +3153,16 @@ export default function SynapseCyber() {
           <div className="hero-content">
             <div className="hero-eyebrow">
               <span className="dot"></span>
-              <span data-i18n="hero.eyebrow">Independent Security Assurance</span>
+              <span>{t('hero.eyebrow')}</span>
             </div>
             <h1 className="brand-title">
               <span style={{ '--i': '0' }}>S</span><span style={{ '--i': '1' }}>y</span><span style={{ '--i': '2' }}>n</span><span style={{ '--i': '3' }}>a</span><span style={{ '--i': '4' }}>p</span><span style={{ '--i': '5' }}>s</span><span style={{ '--i': '6' }}>e</span><span style={{ '--i': '7' }}>C</span><span style={{ '--i': '8' }}>y</span><span style={{ '--i': '9' }}>b</span><span style={{ '--i': '10' }}>e</span><span style={{ '--i': '11' }}>r</span>
             </h1>
-            <p className="brand-tagline" data-i18n="hero.tagline">SECURITY THAT SIMPLY WORKS</p>
+            <p className="brand-tagline">{t('hero.tagline')}</p>
             <a href="#quote" className="hero-cta-pill">
-              <span data-i18n="hero.cta">Get a Security Consultation</span>
+              <span>{t('hero.cta')}</span>
             </a>
-            <p className="hero-subnote" data-i18n="hero.subnote">30-day money-back guarantee · Senior-led engagements</p>
+            <p className="hero-subnote">{t('hero.subnote')}</p>
           </div>
         </section>
 
@@ -3212,27 +3188,27 @@ export default function SynapseCyber() {
                       <span className="logo-dot">S</span>
                       SynapseCyber
                     </div>
-                    <h2>Request a quote</h2>
-                    <p className="quote-banner-sub">Fill the form below and we will reply with a custom quote for your needs.</p>
+                    <h2>{t('quote.title')}</h2>
+                    <p className="quote-banner-sub">{t('quote.subtitle')}</p>
                   </div>
 
 
                   <div className="quote-banner-trust">
-                    <div className="qbt-head">Why SynapseCyber</div>
-                    <div className="qbt-row"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-7" /></svg>Senior consultants only, no juniors on your account</div>
-                    <div className="qbt-row"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-7" /></svg>10+ years, 40+ TRAs &amp; PIAs delivered</div>
-                    <div className="qbt-row"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-7" /></svg>Audit-ready evidence your board accepts</div>
+                    <div className="qbt-head">{t('quote.why')}</div>
+                    <div className="qbt-row"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-7" /></svg>{t('quote.reason1')}</div>
+                    <div className="qbt-row"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-7" /></svg>{t('quote.reason2')}</div>
+                    <div className="qbt-row"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.5 8.5l3 3 6-7" /></svg>{t('quote.reason3')}</div>
                   </div>
                 </div>
               </div>
 
 
               <form className="quote-form-card" onSubmit={quoteForm.handleSubmit} noValidate>
-                <p className="quote-form-intro">A senior consultant replies within one business day. No sales runaround, just a clear scoped quote.</p>
+                <p className="quote-form-intro">{t('quote.intro')}</p>
 
                 <div className="quote-form-row">
                   <div className="form-field">
-                    <label>Full name</label>
+                    <label>{t('quote.fullName')}</label>
                     <div className="field-wrap">
                       <svg className="field-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6">
                         <circle cx="10" cy="6.5" r="3.2" />
@@ -3242,7 +3218,7 @@ export default function SynapseCyber() {
                     </div>
                   </div>
                   <div className="form-field">
-                    <label>Work email</label>
+                    <label>{t('quote.workEmail')}</label>
                     <div className="field-wrap">
                       <svg className="field-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6">
                         <rect x="3" y="5" width="14" height="11" rx="1.5" />
@@ -3255,7 +3231,7 @@ export default function SynapseCyber() {
 
                 <div className="quote-form-row">
                   <div className="form-field">
-                    <label>Organisation</label>
+                    <label>{t('quote.organisation')}</label>
                     <div className="field-wrap">
                       <svg className="field-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6">
                         <path d="M3 17h14M5 17V5h7v12M12 17V9h4v8M7 8h2M7 11h2M7 14h2" />
@@ -3264,7 +3240,7 @@ export default function SynapseCyber() {
                     </div>
                   </div>
                   <div className="form-field">
-                    <label>Service required</label>
+                    <label>{t('quote.serviceRequired')}</label>
                     <div className="field-wrap">
                       <svg className="field-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6">
                         <circle cx="10" cy="10" r="7" />
@@ -3285,7 +3261,7 @@ export default function SynapseCyber() {
                 </div>
 
                 <div className="form-field">
-                  <label>Project details</label>
+                  <label>{t('quote.projectDetails')}</label>
                   <textarea className="quote-textarea" name="message" aria-label="Project details" placeholder="Systems in scope, rough timeline, and any compliance drivers (PIPEDA, SOC 2, RCMP TRA)…" required></textarea>
                 </div>
 
@@ -3337,8 +3313,8 @@ export default function SynapseCyber() {
         <section className="trust-section">
           <div className="container">
             <div className="trust-header reveal">
-              <div className="section-eyebrow" data-i18n="eyebrow.trust">Credentials &amp; Recognition</div>
-              <h2 className="trust-title" data-i18n="title.trust">Trusted standards. <em>Independent</em> verification.</h2>
+              <div className="section-eyebrow">{t('trust.eyebrow')}</div>
+              <h2 className="trust-title" dangerouslySetInnerHTML={{ __html: t('trust.title') }}></h2>
               <p className="trust-lead">Senior consultants aligned with the frameworks your auditors, regulators, and boards already trust.</p>
             </div>
 
@@ -3457,8 +3433,8 @@ export default function SynapseCyber() {
           <div className="container">
             <div className="founder-grid reveal">
               <div className="founder-left">
-                <div className="section-eyebrow" data-i18n="eyebrow.team">Our Team</div>
-                <blockquote className="founder-quote" data-i18n="quote.team">Senior security work needs <em>senior</em> consultants, not three layers of project management between you and the people doing the analysis.</blockquote>
+                <div className="section-eyebrow">{t('team.eyebrow')}</div>
+                <blockquote className="founder-quote" dangerouslySetInnerHTML={{ __html: t('team.quote') }}></blockquote>
                 <div className="founder-attrib">
                   <div className="founder-name">Rida Rashid</div>
                   <div className="founder-title">Founder &amp; Principal Consultant</div>
@@ -3521,8 +3497,8 @@ export default function SynapseCyber() {
         <section id="services">
           <div className="container">
             <div className="reveal">
-              <div className="section-eyebrow" data-i18n="eyebrow.services">What We Do</div>
-              <h2 className="section-title" data-i18n="title.services">Comprehensive <em>cybersecurity</em> services for resilient organisations.</h2>
+              <div className="section-eyebrow">{t('services.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('services.title') }}></h2>
               <p className="section-lead">Senior-led engagements that strengthen defences, minimise risk, and produce evidence your auditors, board, and regulators will accept.</p>
             </div>
 
@@ -3688,8 +3664,8 @@ export default function SynapseCyber() {
         <section id="industries">
           <div className="container">
             <div className="reveal" style={{ maxWidth: '700px' }}>
-              <div className="section-eyebrow" data-i18n="eyebrow.industries">Sectors We Serve</div>
-              <h2 className="section-title" data-i18n="title.industries">Sector expertise, <em>regulatory</em> fluency.</h2>
+              <div className="section-eyebrow">{t('industries.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('industries.title') }}></h2>
               <p className="section-lead">We work where the stakes and the compliance burden are highest, and we speak each sector's regulatory language.</p>
             </div>
             <div className="industries-grid reveal-stagger">
@@ -3731,8 +3707,8 @@ export default function SynapseCyber() {
           <canvas id="method-canvas" aria-hidden="true"></canvas>
           <div className="container">
             <div className="reveal">
-              <div className="section-eyebrow" data-i18n="eyebrow.methodology">How We Work</div>
-              <h2 className="section-title" data-i18n="title.methodology">A structured six-stage <em>engagement</em> process.</h2>
+              <div className="section-eyebrow">{t('methodology.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('methodology.title') }}></h2>
               <p className="section-lead">From scoping through validation, every finding is documented, evidenced, and actionable.</p>
             </div>
 
@@ -3852,8 +3828,8 @@ export default function SynapseCyber() {
           <div className="container">
             <div className="why-layout">
               <div className="why-intro reveal">
-                <div className="section-eyebrow" data-i18n="eyebrow.why">Why Choose Us</div>
-                <h2 className="section-title" data-i18n="title.why">Independent, expert-led security <em>that delivers</em> real answers.</h2>
+                <div className="section-eyebrow">{t('why.eyebrow')}</div>
+                <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('why.title') }}></h2>
                 <p className="section-lead">Not automated scanner output. Senior consultants, conservative judgement, evidence-based reporting.</p>
                 <div className="why-proof">
                   <div className="why-proof-item">
@@ -3933,8 +3909,8 @@ export default function SynapseCyber() {
         <section id="engage">
           <div className="container">
             <div className="reveal" style={{ maxWidth: '700px' }}>
-              <div className="section-eyebrow" data-i18n="eyebrow.engage">How to Engage</div>
-              <h2 className="section-title" data-i18n="title.engage">Clear ways to <em>work with us</em>.</h2>
+              <div className="section-eyebrow">{t('engage.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('engage.title') }}></h2>
               <p className="section-lead">Procurement-ready from day one: cleared personnel, insured engagements, and a model that fits your scope.</p>
             </div>
             <div className="engage-assurance reveal">
@@ -3997,8 +3973,8 @@ export default function SynapseCyber() {
         <section className="coverage">
           <div className="container">
             <div className="coverage-intro reveal">
-              <div className="section-eyebrow" data-i18n="eyebrow.coverage">Global Standards, Local Delivery</div>
-              <h3 className="coverage-intro-title" data-i18n="title.coverage">Senior-led security, measured by outcomes.</h3>
+              <div className="section-eyebrow">{t('coverage.eyebrow')}</div>
+              <h3 className="coverage-intro-title" dangerouslySetInnerHTML={{ __html: t('coverage.title') }}></h3>
             </div>
 
             <div className="globe-container reveal">
@@ -4026,8 +4002,8 @@ export default function SynapseCyber() {
         <section className="engagements">
           <div className="container">
             <div className="reveal" style={{ maxWidth: '760px' }}>
-              <div className="section-eyebrow" data-i18n="eyebrow.engagements">Recent Engagements</div>
-              <h2 className="section-title" data-i18n="title.engagements">Notable work, <em>anonymized</em>.</h2>
+              <div className="section-eyebrow">{t('engagements.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('engagements.title') }}></h2>
               <p className="section-lead">Engagement profiles from across regulated sectors. Client names withheld under NDA; methodology and deliverables disclosed.</p>
             </div>
 
@@ -4109,8 +4085,8 @@ export default function SynapseCyber() {
         <section id="insights">
           <div className="container">
             <div className="reveal" style={{ maxWidth: '760px' }}>
-              <div className="section-eyebrow" data-i18n="eyebrow.insights">Insights &amp; Research</div>
-              <h2 className="section-title" data-i18n="title.insights">Research and <em>thought leadership</em>.</h2>
+              <div className="section-eyebrow">{t('insights.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('insights.title') }}></h2>
               <p className="section-lead">Original research and frameworks our consultants present at international conferences and apply on every engagement.</p>
             </div>
             <div className="insights-grid reveal">
@@ -4185,8 +4161,8 @@ export default function SynapseCyber() {
               </div>
 
               <div className="report-content">
-                <div className="section-eyebrow" data-i18n="eyebrow.sample">Before You Decide</div>
-                <h2 className="section-title" data-i18n="title.sample">See the <em>report</em> before you commit.</h2>
+                <div className="section-eyebrow">{t('sample.eyebrow')}</div>
+                <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('sample.title') }}></h2>
                 <p className="section-lead">A redacted SynapseCyber penetration test report. Real findings, real reproduction steps, real remediation guidance, exactly the format your team receives.</p>
 
                 <ul className="report-includes">
@@ -4217,8 +4193,8 @@ export default function SynapseCyber() {
         <section id="faq">
           <div className="container">
             <div className="reveal">
-              <div className="section-eyebrow" data-i18n="eyebrow.faq">Frequently Asked</div>
-              <h2 className="section-title" data-i18n="title.faq">You have questions, <em>we have</em> answers.</h2>
+              <div className="section-eyebrow">{t('faq.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('faq.title') }}></h2>
             </div>
 
             <div className="faq-list reveal-stagger">
@@ -4256,8 +4232,8 @@ export default function SynapseCyber() {
         <section className="data-posture" style={{ padding: '72px 0' }}>
           <div className="container">
             <div className="reveal" style={{ maxWidth: '720px', marginBottom: '40px' }}>
-              <div className="section-eyebrow" data-i18n="eyebrow.data">Data Handling</div>
-              <h2 className="section-title" data-i18n="title.data" style={{ fontSize: 'clamp(26px,3vw,38px)' }}>Your data stays <em>in Canada</em>, and under control.</h2>
+              <div className="section-eyebrow">{t('data.eyebrow')}</div>
+              <h2 className="section-title" dangerouslySetInnerHTML={{ __html: t('data.title') }} style={{ fontSize: 'clamp(26px,3vw,38px)' }}></h2>
             </div>
             <div className="dp-grid reveal-stagger">
               <div className="dp-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-6-5.7-6-10a6 6 0 0 1 12 0c0 4.3-6 10-6 10z" /><circle cx="12" cy="11" r="2" /></svg><h5>Canadian data residency</h5><p>Client data is stored and processed in Canada and never leaves Canadian jurisdiction.</p></div>

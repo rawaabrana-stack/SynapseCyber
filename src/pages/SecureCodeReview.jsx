@@ -339,6 +339,7 @@ const CSS = `
 .sc-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:8px;font-weight:600;font-size:14.5px;font-family:var(--sans);cursor:pointer;border:none;transition:all .2s}
 .sc-btn.pri{background:var(--ink);color:#fff}.sc-btn.pri:hover{background:var(--acc);transform:translateY(-2px);box-shadow:0 10px 22px rgba(37,99,235,.28)}
 [data-theme="dark"] .sc-btn.pri{background:var(--acc);color:#fff}
+[data-theme="dark"] .sc-btn.pri:hover{background:#fff;color:#0F172A}
 .sc-btn.sec{background:transparent;color:var(--ink);border:1px solid var(--line2)}.sc-btn.sec:hover{border-color:var(--ink)}
 .sc-btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}.sc-btn.ghost:hover{background:rgba(255,255,255,.16)}
 .sc-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at 15% -10%,rgba(37,99,235,.07),transparent 42%),linear-gradient(to bottom,var(--bg2),var(--bg));padding:42px 0 64px}
@@ -361,6 +362,8 @@ const CSS = `
 .sc-tbarin{max-width:1140px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center}
 .sc-tbarin span{font-size:12.5px;display:inline-flex;gap:8px;align-items:center;color:#CBD5E1}
 .sc-tbarin span::before{content:"✓";color:#60A5FA;font-weight:800}
+[data-theme="dark"] .sc-tbar{background:var(--bg-alt)}
+[data-theme="dark"] .sc-tbarin span{color:var(--ink-2)}
 .sc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:34px}
 .sc-card{background:var(--srf);border:1px solid var(--line);border-radius:13px;padding:20px 22px;display:flex;gap:14px;transition:all .35s cubic-bezier(.16,1,.3,1)}
 .sc-card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 14px 30px -16px rgba(15,23,42,.16)}
@@ -433,6 +436,7 @@ const CSS = `
 .sc-cta h3{font-family:var(--disp);font-weight:500;font-size:clamp(23px,3vw,32px);color:#fff;margin-bottom:12px;letter-spacing:-.015em;position:relative}
 .sc-cta p{color:#94A3B8;font-size:15.5px;max-width:540px;margin:0 auto 26px;line-height:1.6;position:relative}
 .sc-cta .sc-btn.pri{background:var(--acc);color:#fff}.sc-cta .sc-btn.pri:hover{background:#fff;color:var(--ink)}
+[data-theme="dark"] .sc-cta .sc-btn.pri:hover{background:#fff;color:#0F172A}
 @media(max-width:720px){.sc-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.sc-page *{transition:none!important}}
 `;

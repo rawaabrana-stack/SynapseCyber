@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "services": "Services",
+    "industries": "Industries",
+    "methodology": "Methodology",
+    "insights": "Insights",
+    "why": "Why Us",
+    "faq": "FAQ",
+    "cta": "Book a Consultation →"
+  },
+  "hero": {
+    "eyebrow": "Independent Security Assurance",
+    "tagline": "SECURITY THAT SIMPLY WORKS",
+    "cta": "Get a Security Consultation",
+    "subnote": "30-day money-back guarantee · Senior-led engagements"
+  },
+  "trust": {
+    "eyebrow": "Credentials & Recognition",
+    "title": "Trusted standards. <em>Independent</em> verification."
+  },
+  "services": {
+    "eyebrow": "What We Do",
+    "title": "Comprehensive <em>cybersecurity</em> services for resilient organisations."
+  },
+  "industries": {
+    "eyebrow": "Sectors We Serve",
+    "title": "Sector expertise, <em>regulatory</em> fluency."
+  },
+  "methodology": {
+    "eyebrow": "How We Work",
+    "title": "A structured six-stage <em>engagement</em> process."
+  },
+  "engage": {
+    "eyebrow": "How to Engage",
+    "title": "Clear ways to <em>work with us</em>."
+  },
+  "why": {
+    "eyebrow": "Why Choose Us",
+    "title": "Independent, expert-led security <em>that delivers</em> real answers."
+  },
+  "coverage": {
+    "eyebrow": "Global Standards, Local Delivery",
+    "title": "Senior-led security, measured by outcomes."
+  },
+  "engagements": {
+    "eyebrow": "Recent Engagements",
+    "title": "Notable work, <em>anonymized</em>."
+  },
+  "insights": {
+    "eyebrow": "Insights & Research",
+    "title": "Research and <em>thought leadership</em>."
+  },
+  "team": {
+    "eyebrow": "Our Team",
+    "quote": "Senior security work needs <em>senior</em> consultants, not three layers of project management between you and the people doing the analysis."
+  },
+  "sample": {
+    "eyebrow": "Before You Decide",
+    "title": "See the <em>report</em> before you commit."
+  },
+  "faq": {
+    "eyebrow": "Frequently Asked",
+    "title": "You have questions, <em>we have</em> answers."
+  },
+  "data": {
+    "eyebrow": "Data Handling",
+    "title": "Your data stays <em>in Canada</em>, and under control."
+  },
+  "quote": {
+    "title": "Request a quote",
+    "subtitle": "Fill the form below and we will reply with a custom quote for your needs.",
+    "why": "Why SynapseCyber",
+    "reason1": "Senior consultants only, no juniors on your account",
+    "reason2": "10+ years, 40+ TRAs & PIAs delivered",
+    "reason3": "Audit-ready evidence your board accepts",
+    "intro": "A senior consultant replies within one business day. No sales runaround, just a clear scoped quote.",
+    "fullName": "Full name",
+    "workEmail": "Work email",
+    "organisation": "Organisation",
+    "serviceRequired": "Service required",
+    "projectDetails": "Project details",
+    "submit": "Request Quote"
+  },
+  "footer": {
+    "tagline": "Independent security assurance for regulated and high-risk organisations.",
+    "services": "Services",
+    "industries": "Industries",
+    "resources": "Resources",
+    "company": "Company",
+    "accessibility": "Accessibility",
+    "a11y": "Accessibility · WCAG 2.1 AA / AODA",
+    "quote": "Request a Quote",
+    "legal": "Trust & Legal",
+    "copyright": "© 2026 SynapseCyber Information Security. All rights reserved."
+  }
+}

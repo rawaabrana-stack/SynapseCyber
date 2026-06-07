@@ -129,6 +129,17 @@ export default function CloudSecurityAssessment() {
         </div>
       </header>
 
+      <div className="sc-tbar">
+        <div className="sc-tbarin">
+          <span>CIS benchmark review</span>
+          <span>Identity &amp; IaC review</span>
+          <span>Multi-cloud coverage</span>
+          <span>Read-only, no agents</span>
+          <span>Prioritised remediation</span>
+          <span>Canadian senior-led</span>
+        </div>
+      </div>
+
       <section className="sc-sec">
         <div className="sc-wrap">
           <div className="sc-eb">Overview</div>
@@ -319,6 +330,7 @@ const CSS = `
 .sc-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:8px;font-weight:600;font-size:14.5px;font-family:var(--sans);cursor:pointer;border:none;transition:all .2s}
 .sc-btn.pri{background:var(--ink);color:#fff}.sc-btn.pri:hover{background:var(--acc);transform:translateY(-2px);box-shadow:0 10px 22px rgba(37,99,235,.28)}
 [data-theme="dark"] .sc-btn.pri{background:var(--acc);color:#fff}
+[data-theme="dark"] .sc-btn.pri:hover{background:#fff;color:#0F172A}
 .sc-btn.sec{background:transparent;color:var(--ink);border:1px solid var(--line2)}.sc-btn.sec:hover{border-color:var(--ink)}
 .sc-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at 15% -10%,rgba(37,99,235,.07),transparent 42%),linear-gradient(to bottom,var(--bg2),var(--bg));padding:42px 0 64px}
 .sc-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.4),transparent 60%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.4),transparent 60%);opacity:.5}
@@ -332,6 +344,12 @@ const CSS = `
 .sc-trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:28px}
 .sc-trust span{font-size:13px;color:var(--ink2);display:inline-flex;gap:7px;align-items:center}
 .sc-trust span::before{content:"✓";color:var(--acc);font-weight:800}
+.sc-tbar{background:var(--ink)}
+.sc-tbarin{max-width:1140px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center}
+.sc-tbarin span{font-size:12.5px;display:inline-flex;gap:8px;align-items:center;color:#CBD5E1}
+.sc-tbarin span::before{content:"✓";color:#60A5FA;font-weight:800}
+[data-theme="dark"] .sc-tbar{background:var(--bg-alt)}
+[data-theme="dark"] .sc-tbarin span{color:var(--ink-2)}
 .sc-cta-row{display:flex;gap:12px;flex-wrap:wrap}
 .sc-bigicon{width:96px;height:96px;border-radius:22px;background:var(--accs);color:var(--acc);display:grid;place-items:center;box-shadow:0 18px 38px -14px rgba(37,99,235,.4)}
 .sc-bigicon svg{width:46px;height:46px}
@@ -412,6 +430,7 @@ const CSS = `
 .sc-cta h3{font-family:var(--disp);font-weight:500;font-size:clamp(23px,3vw,32px);color:#fff;margin-bottom:12px;letter-spacing:-.015em;position:relative}
 .sc-cta p{color:#94A3B8;font-size:15.5px;max-width:560px;margin:0 auto 26px;line-height:1.6;position:relative}
 .sc-cta .sc-btn.pri{background:var(--acc);color:#fff}.sc-cta .sc-btn.pri:hover{background:#fff;color:var(--ink)}
+[data-theme="dark"] .sc-cta .sc-btn.pri:hover{background:#fff;color:#0F172A}
 @media(max-width:720px){.sc-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.sc-page *{transition:none!important}}
 `;

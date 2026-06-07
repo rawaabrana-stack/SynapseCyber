@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as THREE from 'three';
 import { CSS } from './Home.jsx';
 
 export default function Layout() {
     const { pathname } = useLocation();
+    const { t, i18n } = useTranslation();
     const isHome = pathname === '/';
     const [menuOpen, setMenuOpen] = useState(false);
     const [theme, setTheme] = useState(() => {
@@ -22,6 +24,10 @@ export default function Layout() {
             localStorage.setItem('theme', theme);
         }
     }, [theme]);
+
+    const toggleLang = () => {
+        i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en');
+    };
 
     const toggleTheme = () => {
         setTheme(prev => prev === 'light' ? 'dark' : 'light');
@@ -180,13 +186,13 @@ export default function Layout() {
                 <div className="container">
                     <Link to="/" className="logo"><span className="logo-mark"></span>SynapseCyber</Link>
                     <div className="nav-links">
-                        <Link to="/#services" data-i18n="nav.services">Services</Link>
-                        <Link to="/#industries" data-i18n="nav.industries">Industries</Link>
-                        <Link to="/#methodology" data-i18n="nav.methodology">Methodology</Link>
-                        <Link to="/#insights" data-i18n="nav.insights">Insights</Link>
-                        <Link to="/#why" data-i18n="nav.why">Why Us</Link>
-                        <Link to="/#faq" data-i18n="nav.faq">FAQ</Link>
-                        <Link to="/quote" className="nav-cta" data-i18n="nav.cta">Book a Consultation →</Link>
+                        <Link to="/#services">{t('nav.services')}</Link>
+                        <Link to="/#industries">{t('nav.industries')}</Link>
+                        <Link to="/#methodology">{t('nav.methodology')}</Link>
+                        <Link to="/#insights">{t('nav.insights')}</Link>
+                        <Link to="/#why">{t('nav.why')}</Link>
+                        <Link to="/#faq">{t('nav.faq')}</Link>
+                        <Link to="/quote" className="nav-cta">{t('nav.cta')}</Link>
                         <button className="theme-toggle" type="button" aria-label="Toggle theme" onClick={toggleTheme}>
                             {theme === 'light' ? (
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -194,7 +200,7 @@ export default function Layout() {
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                             )}
                         </button>
-                        <button className="lang-toggle" type="button" aria-label="Switch language / Changer de langue"><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button>
+                        <button className={`lang-toggle ${i18n.language === 'fr' ? 'is-fr' : ''}`} type="button" aria-label="Switch language / Changer de langue" onClick={toggleLang}><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button>
                     </div>
                     <button className={`nav-toggle ${menuOpen ? 'is-open' : ''}`} type="button" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((o) => !o)}>
                         <span></span><span></span><span></span>
@@ -202,12 +208,12 @@ export default function Layout() {
                 </div>
                 <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
                     <div className="container">
-                        <Link to="/#services" onClick={() => setMenuOpen(false)}>Services</Link>
-                        <Link to="/#industries" onClick={() => setMenuOpen(false)}>Industries</Link>
-                        <Link to="/#methodology" onClick={() => setMenuOpen(false)}>Methodology</Link>
-                        <Link to="/#insights" onClick={() => setMenuOpen(false)}>Insights</Link>
-                        <Link to="/#why" onClick={() => setMenuOpen(false)}>Why Us</Link>
-                        <Link to="/#faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
+                        <Link to="/#services" onClick={() => setMenuOpen(false)}>{t('nav.services')}</Link>
+                        <Link to="/#industries" onClick={() => setMenuOpen(false)}>{t('nav.industries')}</Link>
+                        <Link to="/#methodology" onClick={() => setMenuOpen(false)}>{t('nav.methodology')}</Link>
+                        <Link to="/#insights" onClick={() => setMenuOpen(false)}>{t('nav.insights')}</Link>
+                        <Link to="/#why" onClick={() => setMenuOpen(false)}>{t('nav.why')}</Link>
+                        <Link to="/#faq" onClick={() => setMenuOpen(false)}>{t('nav.faq')}</Link>
                         <div className="mm-cta">
                             <div className="mm-controls">
                                 <button className="theme-toggle" type="button" aria-label="Toggle theme" onClick={toggleTheme}>
@@ -217,9 +223,9 @@ export default function Layout() {
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                                     )}
                                 </button>
-                                <button className="lang-toggle" type="button" aria-label="Switch language / Changer de langue"><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button>
+                                <button className={`lang-toggle ${i18n.language === 'fr' ? 'is-fr' : ''}`} type="button" aria-label="Switch language / Changer de langue" onClick={toggleLang}><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button>
                             </div>
-                            <Link to="/quote" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Book a Consultation →</Link>
+                            <Link to="/quote" className="btn btn-primary" onClick={() => setMenuOpen(false)}>{t('nav.cta')}</Link>
                         </div>
                     </div>
                 </div>
@@ -231,7 +237,7 @@ export default function Layout() {
                     <div className="footer-top">
                         <div className="footer-brand">
                             <Link to="/" className="logo"><span className="logo-mark"></span>SynapseCyber</Link>
-                            <p data-i18n="footer.tagline">Independent security assurance for regulated and high-risk organisations.</p>
+                            <p>{t('footer.tagline')}</p>
                             <div className="socials">
                                 <a href="#" aria-label="LinkedIn" title="LinkedIn">
                                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -243,20 +249,20 @@ export default function Layout() {
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
                                 </a>
                             </div>
-                            <div className="footer-lang"><button className="lang-toggle" type="button" aria-label="Switch language / Changer de langue"><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button></div>
+                            <div className="footer-lang"><button className={`lang-toggle ${i18n.language === 'fr' ? 'is-fr' : ''}`} type="button" aria-label="Switch language / Changer de langue" onClick={toggleLang}><span className="lang-en">EN</span><span className="lang-sep">|</span><span className="lang-fr">FR</span></button></div>
                         </div>
-                        <div className="footer-col"><h5 data-i18n="footer.services">Services</h5><ul><li><Link to="/penetration-testing">Penetration Testing</Link></li><li><Link to="/threat-risk-assessment">Threat &amp; Risk Assessment</Link></li><li><Link to="/privacy-impact-assessment">Privacy Impact Assessment</Link></li><li><Link to="/red-team-adversary-simulation">Red Team</Link></li><li><Link to="/vciso-advisory">vCISO Advisory</Link></li><li><Link to="/incident-response">Incident Response</Link></li></ul></div>
-                        <div className="footer-col"><h5 data-i18n="footer.industries">Industries</h5><ul><li><Link to="/industries/financial-services">Financial Services</Link></li><li><Link to="/industries/healthcare">Healthcare</Link></li><li><Link to="/industries/government">Government &amp; Crown Corps</Link></li><li><Link to="/industries/saas-technology">SaaS &amp; Technology</Link></li><li><Link to="/industries/critical-infrastructure">Critical Infrastructure</Link></li></ul></div>
-                        <div className="footer-col"><h5 data-i18n="footer.resources">Resources</h5><ul><li><Link to="/resources/sample-report">Sample Pentest Report</Link></li><li><Link to="/resources/tra-methodology">TRA Methodology Guide</Link></li><li><Link to="/resources/blog">Blog &amp; Research</Link></li><li><Link to="/resources/case-studies">Case Studies</Link></li></ul></div>
-                        <div className="footer-col"><h5 data-i18n="footer.company">Company</h5><ul><li><Link to="/about">About</Link></li><li><Link to="/careers">Careers</Link></li><li><Link to="/contact">Contact</Link></li><li><Link to="/quote" data-i18n="footer.quote">Request a Quote</Link></li></ul></div>
-                        <div className="footer-col"><h5 data-i18n="footer.legal">Trust &amp; Legal</h5><ul><li><Link to="/trust">Trust &amp; Assurance</Link></li><li><Link to="/security">Security &amp; Disclosure</Link></li><li><Link to="/legal/privacy">Privacy Policy</Link></li><li><Link to="/legal/terms">Terms of Use</Link></li><li><Link to="/legal/accessibility">Accessibility</Link></li></ul></div>
+                        <div className="footer-col"><h5>{t('footer.services')}</h5><ul><li><Link to="/penetration-testing">Penetration Testing</Link></li><li><Link to="/threat-risk-assessment">Threat &amp; Risk Assessment</Link></li><li><Link to="/privacy-impact-assessment">Privacy Impact Assessment</Link></li><li><Link to="/red-team-adversary-simulation">Red Team</Link></li><li><Link to="/vciso-advisory">vCISO Advisory</Link></li><li><Link to="/incident-response">Incident Response</Link></li></ul></div>
+                        <div className="footer-col"><h5>{t('footer.industries')}</h5><ul><li><Link to="/industries/financial-services">Financial Services</Link></li><li><Link to="/industries/healthcare">Healthcare</Link></li><li><Link to="/industries/government">Government &amp; Crown Corps</Link></li><li><Link to="/industries/saas-technology">SaaS &amp; Technology</Link></li><li><Link to="/industries/critical-infrastructure">Critical Infrastructure</Link></li></ul></div>
+                        <div className="footer-col"><h5>{t('footer.resources')}</h5><ul><li><Link to="/resources/sample-report">Sample Pentest Report</Link></li><li><Link to="/resources/tra-methodology">TRA Methodology Guide</Link></li><li><Link to="/resources/blog">Blog &amp; Research</Link></li><li><Link to="/resources/case-studies">Case Studies</Link></li></ul></div>
+                        <div className="footer-col"><h5>{t('footer.company')}</h5><ul><li><Link to="/about">About</Link></li><li><Link to="/careers">Careers</Link></li><li><Link to="/contact">Contact</Link></li><li><Link to="/quote">{t('footer.quote')}</Link></li></ul></div>
+                        <div className="footer-col"><h5>{t('footer.legal')}</h5><ul><li><Link to="/trust">Trust &amp; Assurance</Link></li><li><Link to="/security">Security &amp; Disclosure</Link></li><li><Link to="/legal/privacy">Privacy Policy</Link></li><li><Link to="/legal/terms">Terms of Use</Link></li><li><Link to="/legal/accessibility">Accessibility</Link></li></ul></div>
                     </div>
                     <details className="a11y" id="accessibility">
-                        <summary data-i18n="footer.a11y">Accessibility · WCAG 2.1 AA / AODA</summary>
+                        <summary>{t('footer.a11y')}</summary>
                         <p>SynapseCyber is committed to digital accessibility. This site targets conformance with WCAG 2.1 Level AA and aligns with the Accessibility for Ontarians with Disabilities Act (AODA) and the Accessible Canada Act. It honours your operating system's reduced-motion preference, supports keyboard navigation, and meets AA colour-contrast ratios. If you encounter a barrier, email <a href="mailto:ridarashid.cyber@gmail.com">ridarashid.cyber@gmail.com</a> and we will respond promptly.</p>
                     </details>
                     <div className="footer-bottom">
-                        <div data-i18n="footer.copyright">© 2026 SynapseCyber Information Security. All rights reserved.</div>
+                        <div>{t('footer.copyright')}</div>
                         <div className="certs-row">
                             <span className="cert">RCMP TRA Aligned</span>
                             <span className="cert">ISO 27001</span>
