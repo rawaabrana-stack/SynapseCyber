@@ -2116,7 +2116,7 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
   /* ===================== ADDED: LANGUAGE TOGGLE ===================== */
-  .lang-toggle { display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid var(--line-2); border-radius:999px; padding:5px 12px; font-family:var(--mono); font-size:11px; letter-spacing:0.08em; cursor:pointer; color:var(--ink-3); transition:all 0.25s; margin-left:6px; }
+  .lang-toggle { display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid var(--line-2); border-radius:999px; padding:5px 12px; font-family:var(--mono); font-size:11px; letter-spacing:0.08em; cursor:pointer; color:var(--ink-3); transition:all 0.25s; margin-left:6px; min-width:60px; justify-content:center; }
   .lang-toggle:hover { border-color:var(--ink-3); }
   .lang-toggle .lang-sep { opacity:0.4; }
   .lang-toggle:not(.is-fr) .lang-en, .lang-toggle.is-fr .lang-fr { color:var(--accent); font-weight:700; }
@@ -2133,8 +2133,10 @@ export const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunc
   nav.scrolled .theme-toggle:hover { border-color:var(--ink-3); }
   .mm-cta .theme-toggle { margin-right:12px; }
   .lang-toggle { margin-left:4px; }
-  .mm-controls { display:flex; gap:8px; align-items:center; margin-bottom:16px; }
+  .mm-controls { display:flex; gap:8px; align-items:center; margin-bottom:16px; justify-content:center; }
   .mm-controls .theme-toggle, .mm-controls .lang-toggle { margin:0; }
+  .mm-controls .theme-toggle { display:inline-flex !important; }
+  .mm-controls .lang-toggle { display:inline-flex !important; }
 
   /* ===================== ADDED: INDUSTRIES ===================== */
   .industries-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
